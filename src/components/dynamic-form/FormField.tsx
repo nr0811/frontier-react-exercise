@@ -16,20 +16,20 @@ export type FormFieldRendererProps = {
 };
 
 export const FormField = ({
-  fieldId,
-  fieldType,
-  metadata,
-  ...props
-}: FormFieldRendererProps) => {
+                            fieldId,
+                            fieldType,
+                            metadata,
+                            ...props
+                          }: FormFieldRendererProps) => {
   switch (fieldType) {
     case 'boolean':
       return (
-        <BooleanButton
-          key={fieldId}
-          value={props.value}
-          onChange={props.onChange}
-          metadata={metadata}
-        />
+          <BooleanButton
+              key={fieldId}
+              value={props.value}
+              onChange={props.onChange}
+              metadata={metadata}
+          />
       );
 
     case 'multichoice':

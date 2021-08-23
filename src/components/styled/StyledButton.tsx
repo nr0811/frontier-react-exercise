@@ -44,7 +44,7 @@ export const StyledBooleanButton = styled(
   border-radius: ${props => props.borderRadius};
   box-shadow: none;
   background: ${props =>
-    props.isChecked ? 'var(--background_color)' : 'white'};
+      props.isChecked ? 'var(--background_color)' : 'white'};
 
   &:hover {
     background: var(--background_color);

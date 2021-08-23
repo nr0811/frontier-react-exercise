@@ -11,6 +11,7 @@ const FormPlacement = styled.div`
   margin-top: 4vw;
   max-width: 60vh;
 `;
+
 function App() {
   const job = formInstructions as Frontier.Job;
   console.log(job);

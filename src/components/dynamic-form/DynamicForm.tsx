@@ -1,9 +1,5 @@
 import React, { FormEvent, useRef } from 'react';
-import {
-  FormElementValue,
-  FormStateType,
-  useDynamicFormState,
-} from './useDynamicFormState';
+import { FormElementValue, FormStateType, useDynamicFormState } from './useDynamicFormState';
 import { StyledLabel } from '../styled/StyledLabel';
 import { FormField } from './FormField';
 import { StyledButton } from '../styled/StyledButton';
