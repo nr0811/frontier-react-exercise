@@ -1,18 +1,29 @@
 import React from 'react';
 import formInstructions from '../data/form_instructions.json';
+import GlobalStyle from '../globalStyles';
+import { DynamicForm } from './dynamic-form/DynamicForm';
+import { FormStateType } from './dynamic-form/useDynamicFormState';
+import styled from 'styled-components';
 
+const FormPlacement = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4vw;
+  max-width: 60vh;
+`;
 function App() {
   const job = formInstructions as Frontier.Job;
-
-  // Check your console to see the full instructions!
   console.log(job);
-
+  const handleSubmit = (formState: FormStateType) => {
+    console.log(formState);
+  };
   return (
-    <div>
-      <img src="https://frontier-public-assets.s3-us-west-2.amazonaws.com/frontier-corona-logo.svg" alt="Frontier Logo" />
-      <h1>👋 Hello from Team Frontier!</h1>
-      <p>Good luck with the exercise. If you have any questions please email Jason: jason@frontier.jobs</p>
-    </div>
+    <>
+      <GlobalStyle />
+      <FormPlacement>
+        <DynamicForm handleSubmit={handleSubmit} job={job} />
+      </FormPlacement>
+    </>
   );
 }
 

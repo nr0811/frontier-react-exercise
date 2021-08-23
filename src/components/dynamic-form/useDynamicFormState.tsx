@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-type FormElementValue = string | number;
+export type FormElementValue = string | number | string[];
 
 export type FormStateType = {
   [sectionId: string]: {
     [elementId: string]: FormElementValue;
   };
 };
+
 export type UseFormStateReturn = {
   handleFormChange: (
     sectionId: string,
@@ -17,11 +18,23 @@ export type UseFormStateReturn = {
   setSelectedSection: (nextIndex: number) => void;
 };
 
-export const useFormState = (
-  initialState: FormStateType,
+export const useDynamicFormState = (
+  initialState: Frontier.Job,
 ): UseFormStateReturn => {
-  const [state, setState] = useState<FormStateType>(initialState);
+  const arraySections = initialState.sections;
+  const formattedInitialState = Object.assign(
+    {},
+    ...arraySections.map(section => {
+      return {
+        [section.id]: Object.assign(
+          {},
+          ...section.content.map(element => ({ [element.id]: '' })),
+        ),
+      };
+    }),
+  );
 
+  const [state, setState] = useState<FormStateType>(formattedInitialState);
   const [selectedSection, setSelectedSection] = useState<number>(0);
   const handleFormChange = (
     sectionId: string,
